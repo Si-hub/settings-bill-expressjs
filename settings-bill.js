@@ -1,9 +1,9 @@
 module.exports = function BillWithSettings(){
 
-    var theCallCost;
-    var theSmsCost;
-    var theWarningLevel;
-    var theCriticalLevel;
+    var theCallCost = 0;
+    var theSmsCost = 0;
+    var theWarningLevel = 0;
+    var theCriticalLevel = 0;
 
    let actionList = [];
 
