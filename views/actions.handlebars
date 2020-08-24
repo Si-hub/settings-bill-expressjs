@@ -1,0 +1,20 @@
+<div class="row">
+    <h1>Actions</h1>
+
+    <table>
+        <tr>
+        <th>Type</th>
+        <th>Price</th>
+        <th>When</th>
+        </tr>
+         <!--loop over the actions-->
+        {{#each actions}}
+        <tr>
+            <!--table row for each entry and we will display these actions-->
+            <td>{{type}}</td>
+            <td>{{cost}}</td>
+            <td>{{timestamp}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</div>

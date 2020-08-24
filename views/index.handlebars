@@ -1,0 +1,91 @@
+<div class="row">
+
+  <div class="twelve columns box">
+    <h3>Bill with settings</h3>
+    <div class="">
+      Select the call or sms radio button. Update the appropriate total and the overall total when the ADD button in
+      pressed.
+      <i>Calls costs should now be configurable using the settings section.</i>
+    </div>
+    <div class="">
+      <i>If the total cost exceed the warning level show the total cost in orange, if it exceeds the critical level show
+        it in red and prevent any new costs from being added. The warning and critical level should both be configurable
+        now.</i>
+    </div>
+
+    <hr>
+
+    <div class="row">
+
+      <div class="six columns">
+        <h5>Bill type</h5>
+        <!--1. for the setting side to take values we need to put all 
+                settings elements tags inside the <form> tag -->
+        <form action="/action" method="POST">
+
+          <label class="">
+            <input type="radio" name="actionType" value="call" class="billItemTypeWithSettings">
+            <span class="label-body">Call</span>
+          </label>
+          <label class="">
+            <input type="radio" name="actionType" value="sms" class="billItemTypeWithSettings">
+            <span class="label-body">SMS</span>
+          </label>
+          <button class="button-primary" type="submit" name="button">Add</button>
+          <!--2. for a button to work on expressJs the "type" need to be "submit" not button -->
+          <!-- 3. give each radio attribute a same name like name="actionType" so that they can work together-->
+          <!--4. add value attribute like value="sms"-->
+        </form>
+
+        <h5>Totals</h5>
+        <!--4. you add totals on template like this: {{totals.callTotals}} starting with the Factory function name-->
+        <table>
+          <tr>
+            <td>
+              <a href="/actions/call">Call total</a>
+            </td>
+            <td>R<span class="callTotalSettings">{{totals.callTotal}}</span> </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="/actions/sms">SMS total</a>
+            </td>
+            <td>R<span class="smsTotalSettings">{{totals.smsTotal}}</span> </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="/actions">Total</a>
+            </td>
+            <td> R<span class="totalSettings">{{totals.grandTotal}}</span> </td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="six columns">
+        <h5>Settings</h5>
+        <!--1. for the setting side to take values we need to put all 
+                settings elements tags inside the <form> tag -->
+        <form action="/settings" method="POST">
+          <label for="exampleEmailInput">Call cost</label>
+          <input class="u-full-width callCostSetting" type="number" step=".01" name="theCallCost" placeholder="eg. 2.55"
+            value="{{settings.theCallCost}}">
+          <label for="exampleEmailInput">SMS cost</label>
+          <input class="u-full-width smsCostSetting" type="number" step=".01" name="theSmsCost" placeholder="eg. 0.65"
+            value="{{settings.theSmsCost}}">
+          <label for="">Warning level</label>
+          <input class="u-full-width warningLevelSetting " type="number" step=".01" name="theWarningLevel"
+            placeholder="eg. 30.00" value="{{settings.theWarningLevel}}">
+          <label for="">Critical level</label>
+          <input class="u-full-width criticalLevelSetting" type="number" step=".01" name="theCriticalLevel"
+            placeholder="eg. 65.00" value="{{settings.theCriticalLevel}}">
+          <button class="button-primary updateSettings" type="submit" name="button">Update settings</button>
+          <!--2. for a button to work on expressJs the "type" need to be "submit" not button -->
+          <!--3. you must give all inputs a name like name="" -->
+          <!--4. set the values for all inputs to help on displaying values back to screen -->
+          <!-- 5. add a class called "step" like step="" to be able to type decimal number 0.25-->
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
