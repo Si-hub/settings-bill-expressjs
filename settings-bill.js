@@ -38,7 +38,7 @@ module.exports = function BillWithSettings() {
     function recordAction(action) { // this is where am setting the entry/action either call or sms
 
         let cost = 0;
-        if (!hasReachedCriticalLevel()) {
+        if (!hasReachedCriticalLevel()) { //keep on adding/counting untill you reach critical level
             if (action === "sms") {
                 cost = theSmsCost;
             } else if (action === "call") {
