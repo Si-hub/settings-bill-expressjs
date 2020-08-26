@@ -1,7 +1,9 @@
 //this is a top-level function exported by the express module
 const exphbs  = require('express-handlebars');
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser'); 
 const express = require("express");
+var moment = require('moment'); // require
+moment().format();
 const BillWithSettings = require('./settings-bill');
 
 //instances
@@ -53,12 +55,22 @@ app.post("/action", function(req, res){
 
 //display all the actions that has been made
 app.get("/actions", function(req, res){
-   res.render("actions", {actions: settingsBill.actions() });
+  var actionList = settingsBill.actions() 
+
+  for(let key of actionList){
+    key.ago = moment(key.timestamp).fromNow()
+  }
+   res.render("actions", {actions: actionList});
 });
 
 //dynamic route that will display call or sms
 app.get("/actions/:actionType", function(req, res){
     const actionType = req.params.actionType;
+    var actionList = settingsBill.actionsFor(actionType) 
+
+  for(let key of actionList){
+    key.ago = moment(key.timestamp).fromNow()
+  }
   res.render("actions", {actions: settingsBill.actionsFor(actionType) });
 })
 
