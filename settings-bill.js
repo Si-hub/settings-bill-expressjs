@@ -98,13 +98,13 @@ module.exports = function BillWithSettings(){
            callTotal,
            grandTotal : grandTotal()
        }
-   }
+   };
 
    function color(){
        let total = grandTotal()
 
        if(total >= theWarningLevel && total < theCriticalLevel){
-        //add the warning that will make the color red
+        //add the warning that will make the color orange
         return "warning"
     }else if(total >= theCriticalLevel){
         return "danger"
