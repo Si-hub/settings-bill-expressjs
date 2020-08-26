@@ -25,7 +25,7 @@ module.exports = function BillWithSettings(){
 
    function hasReachedWarningLevel(){
        const total = grandTotal()
-       const reachedWarningLevel = total > theWarningLevel && total < theCriticalLevel;
+       const reachedWarningLevel = total >= theWarningLevel && total < theCriticalLevel;
        return reachedWarningLevel;
    }
 
@@ -35,7 +35,7 @@ module.exports = function BillWithSettings(){
 }
 
 
-   function recordAction(action){
+   function recordAction(action){ // this is where am setting the entry/action either call or sms
 
     let cost = 0;
     if (action === "sms"){
@@ -125,4 +125,4 @@ return{
 }
 
    
-}
+};
